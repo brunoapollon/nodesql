@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+require('./database'); // informando que ta conectado
 
 const app = express();
 

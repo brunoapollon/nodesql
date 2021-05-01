@@ -13,11 +13,12 @@ routes.put('/users/:user_id', UserController.update);
 //address routes
 routes.post('/users/:user_id/addresses', AddressController.store);
 routes.get('/users/:user_id/addresses', AddressController.index);
-routes.put('/users/:user_id/:address_id/addresses', AddressController.update);
+routes.put('/users/:address_id/addresses', AddressController.update);
 //Techs routes
 routes.get('/users/:user_id/techs', TechController.index);
 routes.post('/users/:user_id/techs', TechController.store);
 routes.delete('/users/:user_id/techs', TechController.delete);
+routes.put('/users/:tech_id/techs', TechController.update);
 
 //report routes
 routes.get('/report', ReportController.show);

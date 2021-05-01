@@ -23,14 +23,11 @@ module.exports = {
     return res.json(address);
   },
   async update(req, res){
-    const { user_id, address_id } = req.params;
+    const { address_id } = req.params;
     console.log(address_id);
     const { zipcode, street, number } = req.body;
     let address = await Address.findByPk(address_id);
-    const user = await User.findByPk(user_id);
-    if(!user){
-      return res.status(400).json({ error: "User not found!" });
-    }else if(!address){
+    if(!address){
       return res.status(400).json({ error: "Address not found!" });
     }
     address = await Address.update({ zipcode, street, number }, {

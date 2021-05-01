@@ -38,5 +38,15 @@ module.exports = {
 
     await user.removeTech(tech);
     return res.json();
+  },
+  async update(req, res){
+    const { tech_id } = req.params;
+    const { name } = req.body;
+    let tech = await Tech.findByPk(tech_id);
+    if(!tech){
+      return res.status(400).json({ error: "Tech not found!" });
+    }
+    tech = await Tech.update({ name}, { where: { id: tech_id } });
+    return res.json(tech);
   }
 };

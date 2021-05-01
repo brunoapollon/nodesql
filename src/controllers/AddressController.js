@@ -34,5 +34,17 @@ module.exports = {
       where: { id: address_id }
     });
     return res.json(address);
+  },
+  async delete(req, res){
+    const { user_id, address_id } = req.params;
+    const user = await User.findByPk(user_id);
+    const address = await Address.findByPk(address_id);
+    if (!user) {
+      return res.status(400).json({ error: 'User not found!' });
+    }else if(!address){
+      return res.status(400).json({ error: 'Address not found!' });
+    }
+    await address.destroy();
+    return res.json();
   }
 };

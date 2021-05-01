@@ -19,5 +19,10 @@ module.exports = {
 
     const user = await User.update({ name, email }, { where: { id: user_id } });
     return res.json(user);
+  },
+  async delete(req, res){
+    const { user_id } = req.params;
+    await User.destroy({ where: { id: user_id} });
+    return res.json();
   }
 };

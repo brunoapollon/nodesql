@@ -9,10 +9,11 @@ const routes = express.Router();
 //users routes
 routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
-
+routes.put('/users/:user_id', UserController.update);
 //address routes
 routes.post('/users/:user_id/addresses', AddressController.store);
 routes.get('/users/:user_id/addresses', AddressController.index);
+routes.put('/users/:user_id/:address_id/addresses', AddressController.update);
 //Techs routes
 routes.get('/users/:user_id/techs', TechController.index);
 routes.post('/users/:user_id/techs', TechController.store);

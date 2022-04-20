@@ -1,9 +1,12 @@
 const User = require("../models/User");
 const CreateUserService = require("../services/CreateUserService");
+const ListAllUsersService = require("../services/ListAllUsersService");
 
 module.exports = {
   async index(req, res) {
-    const users = await User.findAll();
+    const listAllUsersService = new ListAllUsersService();
+
+    const users = await listAllUsersService.execute();
 
     return res.json(users);
   },
